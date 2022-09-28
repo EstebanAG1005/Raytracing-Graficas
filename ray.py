@@ -2,9 +2,6 @@ from lib import *
 from math import *
 from sphere import *
 from material import *
-from light import *
-from intersect import *
-
 
 class Raytracer(object):
     def __init__(self, width, height):
@@ -15,7 +12,6 @@ class Raytracer(object):
         self.clear()
         self.scene = []
         self.background_color = color(0, 0, 0)
-        self.light = Light(V3(0,0,0),1)
 
     def clear(self):
         self.framebuffer = [
@@ -44,28 +40,12 @@ class Raytracer(object):
                 self.framebuffer[y][x] = self.cast_ray(V3(0,0,0), direction)
 
     def cast_ray(self,origin,direction):
-
-        
-        material, intersect = self.scene_intersect(origin, direction)
-
-        if intersect is None:
-            return self.background_color
-
-        if material is None:
-            return self.background_color
-            
-
-        light_dir = norm(sub(self.light.position, intersect.point))
-        intensity = dot(light_dir, intersect.normal)
-
-       
-        diffuse = color(
-            int(material.diffuse[2] * intensity),
-            int(material.diffuse[1] * intensity),
-            int(material.diffuse[0] * intensity))
-
-        return material.diffuse
-
+        material = self.scene_intersect(origin, direction)
+        for s in self.scene:
+            if s.ray_intersect(origin, direction):
+                return s.diffuse
+            else:
+                return self.background_color
 
     def scene_intersect(self,origin,direction):
         zbuffer = 999999
@@ -78,26 +58,42 @@ class Raytracer(object):
                 if object_intersect.distance < zbuffer:
                     zbuffer = object_intersect.distance
                     material = s.material
-                    intersect = object_intersect
-                return s.material, intersect
-
+                return material
 
 
 # ----------------------- Main para correr --------------------------------
 
+# ------------------ Colores ----------------------
 
-red = Material(diffuse=color(255,0,0))
-white = Material(diffuse=color(255,255,255))
-
+ivory = Material(diffuse=color(100, 100, 80))
+rubber = Material(diffuse=color(80, 10, 0))
+snow = Material(diffuse=color(222, 231, 236))
+button = Material(diffuse=color(0, 0, 0))
+eye = Material(diffuse=color(250, 250, 250))
+carrot = Material(diffuse=color(255, 165, 0))
 
 r = Raytracer(800, 600)
-r.light = Light(V3(-3,-2,0), 1)
 r.scene = [
-    Sphere(V3(0, 3, -16), 2, white),
-    Sphere(V3(0, 2.5, -10), 1, red),
-    Sphere(V3(0, 0.2, -16), 1.5, white),
-    
+    Sphere(V3(-0.6, -2.1,-10), 0.1, button),
+    Sphere(V3(-0.2, -1.9,-10), 0.1, button),
+    Sphere(V3(0.2, -1.9,-10), 0.1, button),
+    Sphere(V3(0.6, -2.1,-10), 0.1, button),
+
+    Sphere(V3(0, -2.5,-10), 0.3, carrot),
+
+    Sphere(V3(0.5, -3,-10), 0.1, button),
+    Sphere(V3(-0.5, -3,-10), 0.1, button),
+    Sphere(V3(0.5, -3,-10), 0.2, eye),
+    Sphere(V3(-0.5, -3,-10), 0.2, eye),
+
+    Sphere(V3(0, -0.4,-10), 0.3, button),
+    Sphere(V3(0, 1,-10), 0.4, button),
+    Sphere(V3(0, 3,-10), 0.5, button),
+    Sphere(V3(0, -2.5,-10), 1.3, snow),
+    Sphere(V3(0, 0,-10), 1.8, snow),
+    Sphere(V3(0, 3,-12), 2.8, snow)
 ]
+r.point(100, 100)
 
 r.render()
 
