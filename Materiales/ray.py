@@ -40,10 +40,7 @@ class Raytracer(object):
                 j = (1 - (2 * (y + 0.5) / self.height))* tana
                 
                 direction = norm(V3(i,j,-1))
-                origin = V3(0,0,0)
-                c = self.cast_ray(origin, direction)
-
-                self.point(x, y, c)
+                self.framebuffer[y][x] = self.cast_ray(V3(0,0,0), direction)
 
     def cast_ray(self,origin,direction):
 
@@ -66,7 +63,7 @@ class Raytracer(object):
             int(material.diffuse[1] * intensity),
             int(material.diffuse[0] * intensity))
 
-        return material.diffuse * intensity
+        return material.diffuse
 
 
     def scene_intersect(self,origin,direction):
@@ -79,9 +76,9 @@ class Raytracer(object):
             if object_intersect:
                 if object_intersect.distance < zbuffer:
                     zbuffer = object_intersect.distance
-                    material = s.colores
+                    material = s.material
                     intersect = object_intersect
-                return s.colores, intersect
+                return s.material, intersect
 
 
 

@@ -4,10 +4,10 @@ from intersect import *
 
 
 class Sphere(object):
-    def __init__(self,center,radius,colores):
+    def __init__(self,center,radius,material):
         self.center = center
         self.radius = radius
-        self.colores = colores
+        self.material = material
 
     def ray_intersect(self, origin, direction):
         L = sub(self.center, origin)
