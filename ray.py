@@ -1,6 +1,9 @@
 from lib import *
 from math import *
 from sphere import *
+from material import *
+from light import *
+
 
 class Raytracer(object):
     def __init__(self, width, height):
@@ -11,6 +14,7 @@ class Raytracer(object):
         self.clear()
         self.scene = []
         self.background_color = color(0, 0, 0)
+        self.light = Light(V3(0,0,0),1)
 
     def clear(self):
         self.framebuffer = [
@@ -42,19 +46,59 @@ class Raytracer(object):
                 self.point(x, y, c)
 
     def cast_ray(self,origin,direction):
+
+        
+        material, intersect = self.scene_intersect(origin, direction)
+
+        if intersect is None:
+            return self.background_color
+
+        if material is None:
+            return self.background_color
+            
+
+        light_dir = norm(sub(self.light.position, intersect.point))
+        intensity = dot(light_dir, intersect.normal)
+
+       
+        diffuse = color(
+            int(material.diffuse[2] * intensity),
+            int(material.diffuse[1] * intensity),
+            int(material.diffuse[0] * intensity))
+
+        return material.diffuse * intensity
+
+
+    def scene_intersect(self,origin,direction):
+        zbuffer = 999999
+        material = None
+        intersect = None
+
         for s in self.scene:
-            if s.ray_intersect(origin, direction):
-                return s.colores
-            else:
-                return self.background_color
+            object_intersect = s.ray_intersect(origin,direction)
+            if object_intersect:
+                if object_intersect.distance < zbuffer:
+                    zbuffer = object_intersect.distance
+                    material = s.colores
+                    intersect = object_intersect
+                return s.colores, intersect
+
 
 
 # ----------------------- Main para correr --------------------------------
+
+
+red = Material(diffuse=color(255,0,0))
+white = Material(diffuse=color(255,255,255))
+
+
 r = Raytracer(800, 600)
+r.light = Light(V3(-3,-2,0), 1)
 r.scene = [
-    Sphere(V3(0, -2, -16), 1, color(255, 255, 255)),
-    Sphere(V3(0, 0.2, -16), 1.5, color(255, 255, 255)),
-    Sphere(V3(0, 3, -16), 2, color(255, 255, 255))
+    Sphere(V3(0, 3, -16), 2, white),
+    Sphere(V3(0, 2.5, -10), 1, red),
+    Sphere(V3(0, 0.2, -16), 1.5, white),
+    
 ]
 
 r.render()

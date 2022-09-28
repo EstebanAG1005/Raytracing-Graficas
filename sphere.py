@@ -1,5 +1,6 @@
 from lib import *
 from math import *
+from intersect import *
 
 
 class Sphere(object):
@@ -18,7 +19,7 @@ class Sphere(object):
         
 
         if d2 > self.radius**2:
-            return False
+            return None
 
         thc = (self.radius**2 - d2)**1/2
 
@@ -28,6 +29,14 @@ class Sphere(object):
         if t0 < 0:
             t0 = t1
         if t0 < 0:
-            return False
+            return None
 
-        return True
+
+        impact = direction * t0 + origin
+        normal = norm(sub(impact, self.center))
+
+        return Intersect(
+            distance=t0,
+            point = impact,
+            normal = normal
+        )

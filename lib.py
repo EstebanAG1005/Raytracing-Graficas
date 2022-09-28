@@ -23,6 +23,31 @@ def dword(c):
 def color(r, g, b):
     return bytes([b, g, r])
 
+class Color(object):
+    def __init__(self,r,g,b):
+        self.r = r
+        self.g = g
+        self.b = b
+    
+    def __mul__(self,other):
+        if (type(other) == int or type(other) == float):
+            self.r *= other
+            self.g *= other
+            self.b *= other
+        else:
+            self.r *= other.r
+            self.g *= other.g
+            self.b *= other.b
+
+        #r = min(255, max(r,0)):
+        #g = min(255, max(g,0)):
+        #b = min(255, max(b,0)):
+
+
+    def toBytes(self):
+        return bytes([self.b,self.g,self.r])
+
+
 # ----------------------------- Parte de Operaciones Matematicas -----------------------------------------
 
 # Coordenadas Baricentricas
