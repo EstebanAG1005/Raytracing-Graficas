@@ -57,6 +57,13 @@ def cross(v0, v1):
     v0.x * v1.y - v0.y * v1.x,
 )
 
+def multi(v0,k):
+    return V3(
+        v0.x * k,
+        v0.y * k,
+        v0.z * k
+    )
+
 # Regresa el largo del vector
 def length(v0):
     return (v0.x**2 + v0.y**2 + v0.z**2)**0.5
@@ -79,6 +86,8 @@ def bbox(*vertices):
 
     return V2(xs[0], ys[0]), V2(xs[-1], ys[-1])
 
+def suma(v0, v1):
+    return V3(v0.x + v1.x, v0.y + v1.y, v0.z + v1.z)
 
 def write(filename, width, height, framebuffer):
     f = open(filename, 'bw')

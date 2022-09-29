@@ -50,6 +50,16 @@ class Color(object):
 
 # ----------------------------- Parte de Operaciones Matematicas -----------------------------------------
 
+def multi(v0,k):
+    return V3(
+        v0.x * k,
+        v0.y * k,
+        v0.z * k
+    )
+
+def suma(v0, v1):
+    return V3(v0.x + v1.x, v0.y + v1.y, v0.z + v1.z)
+
 # Coordenadas Baricentricas
 def barycentric(A, B, C, P):
     bary = cross(

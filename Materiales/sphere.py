@@ -31,8 +31,7 @@ class Sphere(object):
         if t0 < 0:
             return None
 
-
-        impact = direction * t0 + origin
+        impact = suma(multi(direction,t0), origin)
         normal = norm(sub(impact, self.center))
 
         return Intersect(

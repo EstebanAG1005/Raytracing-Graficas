@@ -64,7 +64,7 @@ class Raytracer(object):
             int(material.diffuse[1] * intensity),
             int(material.diffuse[0] * intensity))
 
-        return material.diffuse
+        return multi(material.diffuse,multi(intensity, material[0]))
 
 
     def scene_intersect(self,origin,direction):
@@ -79,24 +79,23 @@ class Raytracer(object):
                     zbuffer = object_intersect.distance
                     material = s.material
                     intersect = object_intersect
-                return s.material, intersect
+        
+        return material, intersect
 
 
 
 # ----------------------- Main para correr --------------------------------
 
 
-red = Material(diffuse=color(255,0,0))
-white = Material(diffuse=color(255,255,255))
+rubber = Material(diffuse=color(80,0,0), albedo=[0.9])
+ivory = Material(diffuse=color(100,100,80), albedo=[0.6])
 
 
 r = Raytracer(800, 600)
 r.light = Light(V3(-3,-2,0), 1)
 r.scene = [
-    Sphere(V3(0, 3, -16), 2, white),
-    Sphere(V3(0, 2.5, -10), 1, red),
-    Sphere(V3(0, 0.2, -16), 1.5, white),
-    
+    Sphere(V3(0, 3, -16), 2, rubber),
+    Sphere(V3(0, 2.5, -10), 1, ivory)   
 ]
 
 r.render()
