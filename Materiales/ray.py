@@ -64,6 +64,7 @@ class Raytracer(object):
         specular_intensity = self.light.intensity * (
         max(0, -dot(light_reflection, direction))**material.spec
         )
+    
 
         diffuse = material.diffuse * intensity * material.albedo[0]
         specular = color(255, 255, 255) * specular_intensity * material.albedo[1]
@@ -97,7 +98,7 @@ dark = Material(diffuse=color(0, 0, 0), albedo=(0.3,  0.3), spec=3)
 lightGreen = Material(diffuse=color(130, 223, 36), albedo=(0.9,  0.9), spec=10)
 
 r = Raytracer(800, 600)
-r.light = Light(V3(-3,-2,0), 1)
+r.light = Light(V3(-20, 0, 20), 1)
 r.scene = [
    Sphere(V3(0, 0, -10), 1.5, rubber),
     Sphere(V3(-0.5, -0.5, -8.6), 0.2, lightGreen),
