@@ -4,6 +4,7 @@ from sphere import *
 from material import *
 from light import *
 from intersect import *
+import random
 
 
 class Raytracer(object):
@@ -59,13 +60,14 @@ class Raytracer(object):
         intensity = dot(light_dir, intersect.normal)
 
        
-        diffuse = color(
-            int(material.diffuse[2] * intensity),
-            int(material.diffuse[1] * intensity),
-            int(material.diffuse[0] * intensity))
+        light_reflection = reflect(light_dir, intersect.normal)
+        specular_intensity = self.light.intensity * (
+        max(0, -dot(light_reflection, direction))**material.spec
+        )
 
-        return multi(material.diffuse,multi(intensity, material[0]))
-
+        diffuse = material.diffuse * intensity * material.albedo[0]
+        specular = color(255, 255, 255) * specular_intensity * material.albedo[1]
+        return diffuse + specular
 
     def scene_intersect(self,origin,direction):
         zbuffer = 999999
@@ -87,15 +89,20 @@ class Raytracer(object):
 # ----------------------- Main para correr --------------------------------
 
 
-rubber = Material(diffuse=color(80,0,0), albedo=[0.9])
-ivory = Material(diffuse=color(100,100,80), albedo=[0.6])
-
+rubber = Material(diffuse=color(80,0,0), albedo=(0.6,  0.3), spec=50)
+ivory = Material(diffuse=color(100,100,80), albedo=(0.9,  0.1), spec=10)
+coffee = Material(diffuse=color(170, 80, 40), albedo=(0.9,  0.3), spec=7)
+softcoffee = Material(diffuse=color(230, 170, 135), albedo=(0.9,  0.9), spec=35)
+dark = Material(diffuse=color(0, 0, 0), albedo=(0.3,  0.3), spec=3)
+lightGreen = Material(diffuse=color(130, 223, 36), albedo=(0.9,  0.9), spec=10)
 
 r = Raytracer(800, 600)
 r.light = Light(V3(-3,-2,0), 1)
 r.scene = [
-    Sphere(V3(0, 3, -16), 2, rubber),
-    Sphere(V3(0, 2.5, -10), 1, ivory)   
+   Sphere(V3(0, 0, -10), 1.5, rubber),
+    Sphere(V3(-0.5, -0.5, -8.6), 0.2, lightGreen),
+    Sphere(V3(0, 0.5, -8.6), 0.17, lightGreen),
+    Sphere(V3(0.5, 0.5, -8.6), 0.17, lightGreen),
 ]
 
 r.render()

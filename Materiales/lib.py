@@ -19,34 +19,35 @@ def word(c):
 def dword(c):
     return struct.pack('=l', c)
 
-# Funcion de Color
-def color(r, g, b):
-    return bytes([b, g, r])
+class color(object):
+  def __init__(self, r, g, b):
+    self.r = r
+    self.g = g
+    self.b = b
 
-class Color(object):
-    def __init__(self,r,g,b):
-        self.r = r
-        self.g = g
-        self.b = b
-    
-    def __mul__(self,other):
-        if (type(other) == int or type(other) == float):
-            self.r *= other
-            self.g *= other
-            self.b *= other
-        else:
-            self.r *= other.r
-            self.g *= other.g
-            self.b *= other.b
+  def __add__(self, other_color):
+    r = self.r + other_color.r
+    g = self.g + other_color.g
+    b = self.b + other_color.b
 
-        #r = min(255, max(r,0)):
-        #g = min(255, max(g,0)):
-        #b = min(255, max(b,0)):
+    return color(r, g, b)
 
+  def __mul__(self, other):
+    r = self.r * other
+    g = self.g * other
+    b = self.b * other
+    return color(r, g, b)
 
-    def toBytes(self):
-        return bytes([self.b,self.g,self.r])
+  def __repr__(self):
+    return "color(%s, %s, %s)" % (self.r, self.g, self.b)
 
+  def toBytes(self):
+    self.r = int(max(min(self.r, 255), 0))
+    self.g = int(max(min(self.g, 255), 0))
+    self.b = int(max(min(self.b, 255), 0))
+    return bytes([self.b, self.g, self.r])
+
+  __rmul__ = __mul__
 
 # ----------------------------- Parte de Operaciones Matematicas -----------------------------------------
 
@@ -142,6 +143,10 @@ def write(filename, width, height, framebuffer):
     # pixel data
     for x in range(height):
         for y in range(width):
-            f.write(framebuffer[x][y])
+            f.write(framebuffer[x][y].toBytes())
 
     f.close()
+
+
+def reflect(I, N):
+  return norm(sub(I, multi(N, 2 * dot(I, N))))
