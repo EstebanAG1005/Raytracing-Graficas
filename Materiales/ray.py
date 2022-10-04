@@ -147,4 +147,4 @@ r.scene = [
 
 r.render()
 
-r.write('r.bmp')
+r.write('RT2.bmp')
