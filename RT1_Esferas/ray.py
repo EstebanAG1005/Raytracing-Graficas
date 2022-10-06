@@ -64,13 +64,36 @@ snow = Material(diffuse=color(222, 231, 236))
 button = Material(diffuse=color(0, 0, 0))
 eye = Material(diffuse=color(250, 250, 250))
 carrot = Material(diffuse=color(255, 165, 0))
+cafe = Material(diffuse=color(153,101,21))
 
 r = Raytracer(800, 600)
 r.scene = [
-    Sphere(V3(-0.6, -2.1,-10), 0.1, button),
+    Sphere(V3(-0.6, -1.7,-10), 0.1, button),
     Sphere(V3(-0.2, -1.9,-10), 0.1, button),
     Sphere(V3(0.2, -1.9,-10), 0.1, button),
-    Sphere(V3(0.6, -2.1,-10), 0.1, button),
+    Sphere(V3(0.6, -1.7,-10), 0.1, button),
+
+
+    Sphere(V3(1.8, -0.4,-10), 0.1, cafe),
+    Sphere(V3(1.9, -0.5,-10), 0.1, cafe),
+    Sphere(V3(2, -0.6,-10), 0.1, cafe),
+    Sphere(V3(2.1, -0.7,-10), 0.1, cafe),
+    Sphere(V3(2.2, -0.8,-10), 0.1, cafe),
+    Sphere(V3(2.3, -0.9,-10), 0.1, cafe),
+    Sphere(V3(2.4, -1,-10), 0.1, cafe),
+    Sphere(V3(2.5, -1.1,-10), 0.1, cafe),
+    Sphere(V3(2.6, -1.2,-10), 0.1, cafe),
+
+    Sphere(V3(-1.8, -0.4,-10), 0.1, cafe),
+    Sphere(V3(-1.9, -.5,-10), 0.1, cafe),
+    Sphere(V3(-2, -0.6,-10), 0.1, cafe),
+    Sphere(V3(-2.1, -0.7,-10), 0.1, cafe),
+    Sphere(V3(-2.2, -0.8,-10), 0.1, cafe),
+    Sphere(V3(-2.3, -0.9,-10), 0.1, cafe),
+    Sphere(V3(-2.4, -1,-10), 0.1, cafe),
+    Sphere(V3(-2.5, -1.1,-10), 0.1, cafe),
+    Sphere(V3(-2.6, -1.2,-10), 0.1, cafe),
+    
 
     Sphere(V3(0, -2.5,-10), 0.3, carrot),
 
@@ -84,7 +107,9 @@ r.scene = [
     Sphere(V3(0, 3,-10), 0.5, button),
     Sphere(V3(0, -2.5,-10), 1.3, snow),
     Sphere(V3(0, 0,-10), 1.8, snow),
-    Sphere(V3(0, 3,-12), 2.8, snow)
+    Sphere(V3(0, 4,-12), 2.8, snow),
+
+    
 ]
 r.point(100, 100)
 
