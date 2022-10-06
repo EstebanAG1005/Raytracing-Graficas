@@ -1,4 +1,3 @@
 class Material:
-    def __init__(self, diffuse,albedo):
+    def __init__(self, diffuse):
         self.diffuse = diffuse
-        self.albedo = albedo

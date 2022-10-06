@@ -28,4 +28,5 @@ class Sphere(object):
             t0 = t1
         if t0 < 0:
             return False
+        return True
 

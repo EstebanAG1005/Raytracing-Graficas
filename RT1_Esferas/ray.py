@@ -38,27 +38,20 @@ class Raytracer(object):
                 
                 direction = norm(V3(i,j,-1))
                 self.framebuffer[y][x] = self.cast_ray(V3(0,0,0), direction)
+                
 
     def cast_ray(self,origin,direction):
         material = self.scene_intersect(origin, direction)
-        for s in self.scene:
-            if s.ray_intersect(origin, direction):
-                return s.diffuse
-            else:
-                return self.background_color
+        if material:
+            return material.diffuse
+        else:
+            return self.background_color
 
     def scene_intersect(self,origin,direction):
-        zbuffer = 999999
-        material = None
-        intersect = None
-
         for s in self.scene:
-            object_intersect = s.ray_intersect(origin,direction)
-            if object_intersect:
-                if object_intersect.distance < zbuffer:
-                    zbuffer = object_intersect.distance
-                    material = s.material
-                return material
+            if s.ray_intersect(origin, direction):
+                return s.material
+        return None
 
 
 # ----------------------- Main para correr --------------------------------
@@ -97,4 +90,4 @@ r.point(100, 100)
 
 r.render()
 
-r.write('r.bmp')
+r.write('RT1.bmp')
