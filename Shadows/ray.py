@@ -41,7 +41,7 @@ class Raytracer(object):
         for y in range(self.height):
             for x in range(self.width):
                 i = ((2 * (x + 0.5) / self.width) -1) * ar * tana
-                j = ( (2 * (y + 0.5) / self.height)-1)* tana
+                j = ( 1-(2 * (y + 0.5) / self.height))* tana
                 
                 direction = norm(V3(i,j,-1))
                 self.framebuffer[y][x] = self.cast_ray(V3(0,0,0), direction)
@@ -62,11 +62,18 @@ class Raytracer(object):
 
         if material.albedo[2] > 0:
             reverse_direction = multi(direction, -1)
-            reflect_direction = reflect(reverse_direction, intersect.normal)
+            reflect_direction = reflect(direction, intersect.normal)
             reflect_orig = sub(intersect.point, offset_normal) if dot(reflect_direction, intersect.normal) < 0 else suma(intersect.point, offset_normal)
             reflect_color = self.cast_ray(reflect_orig, reflect_direction, recursion + 1)
         else:
             reflect_color = color(0, 0, 0)
+
+        if material.albedo[3] > 0:
+            refract_dir = refract(direction, intersect.normal, material.refractive_index)
+            refract_orig = sub(intersect.point, offset_normal) if dot(refract_dir, intersect.normal) < 0 else suma(intersect.point, offset_normal)
+            refract_color = self.cast_ray(refract_orig, refract_dir, recursion + 1)
+        else:
+            refract_color = color(0, 0, 0)
 
         # Shadow
 
@@ -84,6 +91,7 @@ class Raytracer(object):
         diffuse = material.diffuse * intensity * material.albedo[0] 
         specular = color(255, 255, 255) * specular_intensity * material.albedo[1]
         reflection = reflect_color * material.albedo[2]
+        refraction = refract_color * material.albedo[3]
 
        
         shadow_orig = sub(intersect.point, offset_normal) if dot(light_dir, intersect.normal) < 0 else suma(intersect.point, offset_normal)
@@ -96,7 +104,7 @@ class Raytracer(object):
         intensity = self.light.intensity * max(0, dot(light_dir, intersect.normal)) * (1 - shadow_intensity)
         
 
-        return diffuse + specular + reflection
+        return diffuse + specular + reflection + refraction
 
     def scene_intersect(self,origin,direction):
         zbuffer = 999999
@@ -127,19 +135,20 @@ lightGreen = Material(diffuse=color(130, 223, 36), albedo=(0.9,  0.9), spec=10)
 iron = Material(diffuse=color(200, 200, 200), albedo=(1,  1), spec=20)
 snow = Material(diffuse=color(250, 250, 250), albedo=(0.9,  0.9), spec=35)
 
-ivory = Material(diffuse=color(100, 100, 80), albedo=(0.6,  0.3, 0.1), spec=50)
-rubber = Material(diffuse=color(80, 0, 0), albedo=(0.9,  0.1, 0), spec=10)
-mirror = Material(diffuse=color(255, 255, 255), albedo=(0, 10, 0.8), spec=1425)
+ivory = Material(diffuse=color(100, 100, 80), albedo=(0.6, 0.3, 0.1, 0), spec=50)
+rubber = Material(diffuse=color(80, 0, 0), albedo=(0.9, 0.1, 0, 0, 0), spec=10)
+mirror = Material(diffuse=color(255, 255, 255), albedo=(0, 10, 0.8, 0), spec=1425)
+glass = Material(diffuse=color(150, 180, 200), albedo=(0, 0.5, 0.1, 0.8), spec=125, refractive_index=1.5)
 
 r = Raytracer(800, 600)
 r.light = Light(V3(-20, 20, 20), 1)
 r.scene = [
     Sphere(V3(0, -1.5, -10), 1.5, ivory),
-    Sphere(V3(-2, -1, -12), 2, mirror),
+    Sphere(V3(0, 0, -5), 0.5, glass),
     Sphere(V3(1, 1, -8), 1.7, rubber),
-    Sphere(V3(-3, 3, -10), 2, mirror)
+    Sphere(V3(-2, 1, -10), 2, mirror)
 ]
 
 r.render()
 
-r.write('RT4.bmp')
+r.write('RT5.bmp')
