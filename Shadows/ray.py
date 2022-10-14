@@ -5,6 +5,7 @@ from material import *
 from light import *
 from intersect import *
 import random
+from Plane import *
 
 MAX_RECURSION_DEPTH = 3
 
@@ -17,7 +18,7 @@ class Raytracer(object):
         self.current_color = color(255,255,255)
         self.clear()
         self.scene = []
-        self.background_color = color(0, 0, 100)
+        self.background_color = color(50, 50, 200)
         self.light = Light(V3(0,0,0),1)
 
     def clear(self):
@@ -143,12 +144,14 @@ glass = Material(diffuse=color(150, 180, 200), albedo=(0, 0.5, 0.1, 0.8), spec=1
 r = Raytracer(800, 600)
 r.light = Light(V3(-20, 20, 20), 1)
 r.scene = [
-    Sphere(V3(0, -1.5, -10), 1.5, ivory),
-    Sphere(V3(0, 0, -5), 0.5, glass),
-    Sphere(V3(1, 1, -8), 1.7, rubber),
-    Sphere(V3(-2, 1, -10), 2, mirror)
+        Sphere(V3(0, 0, -5), 0.5, glass),
+        Sphere(V3(1, 1, -8), 1.7, rubber),
+        Sphere(V3(-3, 3, -10), 2, mirror),
+        Plane(2, ivory)
 ]
+
+r.envmap = Envmap('./envmap.bmp')
 
 r.render()
 
-r.write('RT5.bmp')
+r.write('Plane.bmp')
