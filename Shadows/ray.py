@@ -129,7 +129,7 @@ class Raytracer(object):
 
 #rubber = Material(diffuse=color(80,0,0), albedo=(0.6,  0.3), spec=50)
 #ivory = Material(diffuse=color(100,100,80), albedo=(0.9,  0.1), spec=10)
-coffee = Material(diffuse=color(170, 80, 40), albedo=(0.9,  0.3), spec=7)
+coffee = Material(diffuse=color(71, 51, 10), albedo=(0.6,  0.3, 0, 0, 0), spec=10)
 softcoffee = Material(diffuse=color(230, 170, 135), albedo=(0.9,  0.9), spec=35)
 dark = Material(diffuse=color(0, 0, 0), albedo=(0.3,  0.3), spec=3)
 lightGreen = Material(diffuse=color(130, 223, 36), albedo=(0.9,  0.9), spec=10)
@@ -143,15 +143,16 @@ glass = Material(diffuse=color(150, 180, 200), albedo=(0, 0.5, 0.1, 0.8), spec=1
 
 r = Raytracer(800, 600)
 r.light = Light(V3(-20, 20, 20), 1)
+r.Envmap = Envmap('./envmap.bmp')
+
 r.scene = [
         Sphere(V3(0, 0, -5), 0.5, glass),
         Sphere(V3(1, 1, -8), 1.7, rubber),
         Sphere(V3(-3, 3, -10), 2, mirror),
         Plane(2, ivory)
+        
 ]
-
-r.envmap = Envmap('./envmap.bmp')
 
 r.render()
 
-r.write('Plane.bmp')
+r.write('Envmap.bmp')
