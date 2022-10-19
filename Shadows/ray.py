@@ -9,7 +9,6 @@ from Plane import *
 
 MAX_RECURSION_DEPTH = 3
 
-
 class Raytracer(object):
     def __init__(self, width, height):
         self.width = width
@@ -44,7 +43,7 @@ class Raytracer(object):
         for y in range(self.height):
             for x in range(self.width):
                 i = ((2 * (x + 0.5) / self.width) -1) * ar * tana
-                j = ( 1-(2 * (y + 0.5) / self.height))* tana
+                j = ((2 * (y + 0.5) / self.height) -1)* tana
                 
                 direction = norm(V3(i,j,-1))
                 self.framebuffer[y][x] = self.cast_ray(V3(0,0,0), direction)
@@ -107,7 +106,10 @@ class Raytracer(object):
             shadow_intensity = 0.9
 
         intensity = self.light.intensity * max(0, dot(light_dir, intersect.normal)) * (1 - shadow_intensity)
-        
+
+        if material.texture and intersect.text_coords is not None:
+            text_color = material.texture.get_color(intersect.text_coords[0], intersect.text_coords[1])
+            diffuse = text_color * 255
 
         return diffuse + specular + reflection + refraction
 
@@ -145,21 +147,55 @@ rubber = Material(diffuse=color(80, 0, 0), albedo=(0.9, 0.1, 0, 0, 0), spec=10)
 mirror = Material(diffuse=color(255, 255, 255), albedo=(0, 10, 0.8, 0), spec=1425)
 glass = Material(diffuse=color(150, 180, 200), albedo=(0, 0.5, 0.1, 0.8), spec=125, refractive_index=1.5)
 
+cuarzo = Material(texture=Texture('./mine_madera.bmp'))
+
+madera = Material(texture=Texture('./mine_madera.bmp'))
+
+
 r = Raytracer(800, 600)
 r.light = Light(V3(-20, 20, 20), 1)
-r.envmap = Envmap('./envmap.bmp')
+r.envmap = Envmap('./minecraft.bmp')
 
 r.scene = [
-        Sphere(V3(0, 0, -5), 0.5, glass),
-        Sphere(V3(1, 1, -8), 1.7, rubber),
-        
-      
+        #Techo principal hecho de cuarzo
+        #Cube(V3(1, 1, -9.25), 0.5, cuarzo),
+        #Cube(V3(0.5, 1, -9.25), 0.5, cuarzo),  
+        #Cube(V3(0, 1, -9.25), 0.5, cuarzo),  
+        #Cube(V3(-0.5, 1, -9.25), 0.5, cuarzo),
+        #Cube(V3(-1, 1, -9.25), 0.5, cuarzo),
+        #Cube(V3(-1.5, 1, -9.25), 0.5, cuarzo),
+        #Cube(V3(-2, 1, -9.25), 0.5, cuarzo),
+        #Cube(V3(-2.5, 1, -9.25), 0.5, cuarzo),
+        #Cube(V3(-3, 1, -9.25), 0.5, cuarzo),
+        #Cube(V3(-3.5, 1, -9.25), 0.5, cuarzo),
+        #Cube(V3(-4, 1, -9.25), 0.5, cuarzo),
 
-        Cube(V3(1, 1, -8), 1.7, rubber),
 
-       
+        #Techa en Desnivel  
+        Cube(V3(1, 1.5, -9.25), 0.5, cuarzo),
+        Cube(V3(1.5, 1.5, -9.25), 0.5, cuarzo),
+        Cube(V3(1.5, 2, -9.25), 0.5, cuarzo),
+        #Cube(V3(2, 2, -9.25), 0.5, cuarzo),
+        #Cube(V3(2, 2.5, -9.25), 0.5, cuarzo),
+        #Cube(V3(2.5, 2.5, -9.25), 0.5, cuarzo),
+        #Cube(V3(2.5, 3, -9.25), 0.5, cuarzo),
+        #Cube(V3(3, 3, -9.25), 0.5, cuarzo),
+        #Cube(V3(3.5, 3, -9.25), 0.5, cuarzo),
+        #Cube(V3(4, 3, -9.25), 0.5, cuarzo),
+        #Cube(V3(4, 2.5, -9.25), 0.5, cuarzo),
+        #Cube(V3(4.5, 2.5, -9.25), 0.5, cuarzo),
+        #Cube(V3(4.5, 2, -9.25), 0.5, cuarzo),
+        #Cube(V3(5, 2, -9.25), 0.5, cuarzo),
+        #Cube(V3(5, 1.5, -9.25), 0.5, cuarzo),
+        #Cube(V3(5.5, 1.5, -9.25), 0.5, cuarzo),
+
+        #Columnas de madera
+        Cube(V3(1.25, 1.25, -9.25), 0.25, madera),
+
+
+
         
-        
+
 ]
 
 r.render()
