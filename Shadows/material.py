@@ -1,5 +1,5 @@
 class Material:
-    def __init__(self, diffuse,  albedo=(1, 0), spec=0,refractive_index=1):
+    def __init__(self, diffuse,  albedo=(1, 0, 0, 0), spec=0,refractive_index=1):
         self.diffuse = diffuse
         self.albedo = albedo
         self.spec = spec
