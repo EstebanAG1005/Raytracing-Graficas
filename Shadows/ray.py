@@ -154,43 +154,74 @@ madera = Material(texture=Texture('./mine_madera.bmp'))
 
 r = Raytracer(800, 600)
 r.light = Light(V3(-20, 20, 20), 1)
+
 r.envmap = Envmap('./minecraft.bmp')
 
 r.scene = [
         #Techo principal hecho de cuarzo
-        #Cube(V3(1, 1, -9.25), 0.5, cuarzo),
-        #Cube(V3(0.5, 1, -9.25), 0.5, cuarzo),  
-        #Cube(V3(0, 1, -9.25), 0.5, cuarzo),  
-        #Cube(V3(-0.5, 1, -9.25), 0.5, cuarzo),
-        #Cube(V3(-1, 1, -9.25), 0.5, cuarzo),
-        #Cube(V3(-1.5, 1, -9.25), 0.5, cuarzo),
-        #Cube(V3(-2, 1, -9.25), 0.5, cuarzo),
-        #Cube(V3(-2.5, 1, -9.25), 0.5, cuarzo),
-        #Cube(V3(-3, 1, -9.25), 0.5, cuarzo),
-        #Cube(V3(-3.5, 1, -9.25), 0.5, cuarzo),
-        #Cube(V3(-4, 1, -9.25), 0.5, cuarzo),
+        Cube(V3(1, 1, -9.25), 0.5, snow),
+        Cube(V3(0.5, 1, -9.25), 0.5, snow),  
+        Cube(V3(0, 1, -9.25), 0.5, snow),  
+        Cube(V3(-0.5, 1, -9.25), 0.5, snow),
+        Cube(V3(-1, 1, -9.25), 0.5, snow),
+        Cube(V3(-1.5, 1, -9.25), 0.5, snow),
+        Cube(V3(-2, 1, -9.25), 0.5, snow),
+        Cube(V3(-2.5, 1, -9.25), 0.5, snow),
+        Cube(V3(-3, 1, -9.25), 0.5, snow),
+        Cube(V3(-3.5, 1, -9.25), 0.5, snow),
+        Cube(V3(-4, 1, -9.25), 0.5, snow),
 
 
         #Techa en Desnivel  
-        Cube(V3(1, 1.5, -9.25), 0.5, cuarzo),
-        Cube(V3(1.5, 1.5, -9.25), 0.5, cuarzo),
-        Cube(V3(1.5, 2, -9.25), 0.5, cuarzo),
-        #Cube(V3(2, 2, -9.25), 0.5, cuarzo),
-        #Cube(V3(2, 2.5, -9.25), 0.5, cuarzo),
-        #Cube(V3(2.5, 2.5, -9.25), 0.5, cuarzo),
-        #Cube(V3(2.5, 3, -9.25), 0.5, cuarzo),
-        #Cube(V3(3, 3, -9.25), 0.5, cuarzo),
-        #Cube(V3(3.5, 3, -9.25), 0.5, cuarzo),
-        #Cube(V3(4, 3, -9.25), 0.5, cuarzo),
-        #Cube(V3(4, 2.5, -9.25), 0.5, cuarzo),
-        #Cube(V3(4.5, 2.5, -9.25), 0.5, cuarzo),
-        #Cube(V3(4.5, 2, -9.25), 0.5, cuarzo),
-        #Cube(V3(5, 2, -9.25), 0.5, cuarzo),
-        #Cube(V3(5, 1.5, -9.25), 0.5, cuarzo),
-        #Cube(V3(5.5, 1.5, -9.25), 0.5, cuarzo),
+        Cube(V3(1, 1.5, -9.25), 0.5, snow),
+        Cube(V3(1.5, 1.5, -9.25), 0.5, snow),
+        Cube(V3(1.5, 2, -9.25), 0.5, snow),
+        Cube(V3(2, 2, -9.25), 0.5, snow),
+        Cube(V3(2, 2.5, -9.25), 0.5, snow),
+        Cube(V3(2.5, 2.5, -9.25), 0.5, snow),
+        Cube(V3(2.5, 3, -9.25), 0.5, snow),
+        Cube(V3(3, 3, -9.25), 0.5, snow),
+        Cube(V3(3.5, 3, -9.25), 0.5, snow),
+        Cube(V3(4, 3, -9.25), 0.5, snow),
+        Cube(V3(4, 2.5, -9.25), 0.5, snow),
+        Cube(V3(4.5, 2.5, -9.25), 0.5, snow),
+        Cube(V3(4.5, 2, -9.25), 0.5, snow),
+        Cube(V3(5, 2, -9.25), 0.5, snow),
+        Cube(V3(5, 1.5, -9.25), 0.5, snow),
+        Cube(V3(5.5, 1.5, -9.25), 0.5, snow),
 
-        #Columnas de madera
-        Cube(V3(1.25, 1.25, -9.25), 0.25, madera),
+        #Columnas de madera izquierda 
+        Cube(V3(1.25, 1.25, -9.25), 0.25, coffee),
+        Cube(V3(1.25, 1, -9.25), 0.25, coffee),
+        Cube(V3(1.25, 0.75, -9.25), 0.25, coffee),
+        Cube(V3(1.25, 0.50, -9.25), 0.25, coffee),
+        Cube(V3(1.25, 0.25, -9.25), 0.25, coffee),
+        Cube(V3(1.25, 0, -9.25), 0.25, coffee),
+        Cube(V3(1.25, -0.25, -9.25), 0.25, coffee),
+        Cube(V3(1.25, -0.50, -9.25), 0.25, coffee),
+        Cube(V3(1.25, -0.75, -9.25), 0.25, coffee),
+        Cube(V3(1.25, -1, -9.25), 0.25, coffee),
+        Cube(V3(1.25, 1.25, -9.25), 0.25, coffee),
+        Cube(V3(1.25, 1.50, -9.25), 0.25, coffee),
+
+        #columnas de coffee derecha
+        Cube(V3(5.25, 1.25, -9.25), 0.25, coffee),
+        Cube(V3(5.25, 1, -9.25), 0.25, coffee),
+        Cube(V3(5.25, 0.75, -9.25), 0.25, coffee),
+        Cube(V3(5.25, 0.50, -9.25), 0.25, coffee),
+        Cube(V3(5.25, 0.25, -9.25), 0.25, coffee),
+        Cube(V3(5.25, 0, -9.25), 0.25, coffee),
+        Cube(V3(5.25, -0.25, -9.25), 0.25, coffee),
+        Cube(V3(5.25, -0.50, -9.25), 0.25, coffee),
+        Cube(V3(5.25, -0.75, -9.25), 0.25, coffee),
+        Cube(V3(5.25, -1, -9.25), 0.25, coffee),
+        Cube(V3(5.25, 1.25, -9.25), 0.25, coffee),
+        Cube(V3(5.25, 1.50, -9.25), 0.25, coffee),
+
+        #Porton de casa
+
+
+
 
 
 
