@@ -152,6 +152,7 @@ glass = Material(diffuse=color(150, 180, 200), albedo=(0, 0.5, 0.1, 0.8), spec=1
 
 madera = Material(texture=Texture('./maderamine.bmp'))
 cuarzo = Material(texture=Texture('./cuarzo.bmp'))
+hojas = Material(texture=Texture('./hojas.bmp'))
 
 
 r = Raytracer(800, 600)
@@ -174,7 +175,7 @@ r.scene = [
         Cube(V3(-4, 1, -9.25), 0.5, cuarzo),
 
 
-        # # Techa en Desnivel  
+        # # # Techa en Desnivel  
         Cube(V3(1, 1, -9.25), 0.5, cuarzo),
         Cube(V3(1.5, 1, -9.25), 0.5, cuarzo),
         Cube(V3(1.5, 1.5, -9.25), 0.5, cuarzo),
@@ -204,7 +205,7 @@ r.scene = [
         Cube(V3(1.25, -0.75, -9.25), 0.25, madera),
         Cube(V3(1.25, -1, -9.25), 0.25, madera),
 
-        # #columnas de madera derecha
+        # # #columnas de madera derecha
         Cube(V3(5.25, 1.25, -9.25), 0.25, madera),
         Cube(V3(5.25, 1, -9.25), 0.25, madera),
         Cube(V3(5.25, 0.75, -9.25), 0.25, madera),
@@ -227,8 +228,6 @@ r.scene = [
         Cube(V3(-1.5, -0.75, -9.25), 0.25, madera),
         Cube(V3(-1.5, -1, -9.25), 0.25, madera),
 
-       
-        
 
         #Columna de madera izquierda
         Cube(V3(-4, 0.75, -9.25), 0.25, madera),
@@ -239,8 +238,15 @@ r.scene = [
         Cube(V3(-4, -0.5, -9.25), 0.25, madera),
         Cube(V3(-4, -0.75, -9.25), 0.25, madera),
         Cube(V3(-4, -1, -9.25), 0.25, madera),
-   
-        
+
+
+        #Parte de Hojas
+        Cube(V3(-1.5, -1.25, -9.25), 0.5, hojas),
+        Cube(V3(-2, -1.25, -9.25), 0.5, hojas),
+        Cube(V3(-2.5, -1.25, -9.25), 0.5, hojas),
+        Cube(V3(-3, -1.25, -9.25), 0.5, hojas),
+        Cube(V3(-3.5, -1.25, -9.25), 0.5, hojas),
+        Cube(V3(-4, -1.25, -9.25), 0.5, hojas),
 
 
         #Fachada de la casa
