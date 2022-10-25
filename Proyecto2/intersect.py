@@ -1,5 +1,5 @@
 class Intersect:
-    def __init__(self,distance,point, normal,text_coords=(-1,-1)):
+    def __init__(self,distance,point, normal,text_coords):
         self.distance = distance
         self.point = point
         self.normal = normal

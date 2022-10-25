@@ -141,7 +141,7 @@ softcoffee = Material(diffuse=color(230, 170, 135), albedo=(0.9,  0.9), spec=35)
 dark = Material(diffuse=color(0, 0, 0), albedo=(0.3,  0.3), spec=3)
 lightGreen = Material(diffuse=color(130, 223, 36), albedo=(0.9,  0.9), spec=10)
 iron = Material(diffuse=color(200, 200, 200), albedo=(1,  1), spec=20)
-snow = Material(diffuse=color(250, 250, 250), albedo=(0.9,  0.9), spec=35)
+cuarzo = Material(diffuse=color(250, 250, 250), albedo=(0.9,  0.9), spec=35)
 
 ivory = Material(diffuse=color(100, 100, 80), albedo=(0.6, 0.3, 0.1, 0), spec=50)
 rubber = Material(diffuse=color(80, 0, 0), albedo=(0.9, 0.1, 0, 0, 0), spec=10)
@@ -151,73 +151,100 @@ glass = Material(diffuse=color(150, 180, 200), albedo=(0, 0.5, 0.1, 0.8), spec=1
 #cuarzo = Material(texture=('./mine_madera.bmp'))
 
 madera = Material(texture=Texture('./maderamine.bmp'))
+cuarzo = Material(texture=Texture('./cuarzo.bmp'))
 
 
-r = Raytracer(100, 100)
+r = Raytracer(800, 600)
 r.light = Light(V3(-20, 20, 20), 1)
 
 r.envmap = Envmap('./minecraft.bmp')
 
 r.scene = [
         #Techo principal hecho de cuarzo
-        Cube(V3(1, 1, -9.25), 0.5, madera),
-        Cube(V3(0.5, 1, -9.25), 0.5, madera),  
-        Cube(V3(0, 1, -9.25), 0.5, madera),  
-        Cube(V3(-0.5, 1, -9.25), 0.5, madera),
-        Cube(V3(-1, 1, -9.25), 0.5, madera),
-        Cube(V3(-1.5, 1, -9.25), 0.5, madera),
-        Cube(V3(-2, 1, -9.25), 0.5, madera),
-        Cube(V3(-2.5, 1, -9.25), 0.5, madera),
-        Cube(V3(-3, 1, -9.25), 0.5, madera),
-        Cube(V3(-3.5, 1, -9.25), 0.5, madera),
-        Cube(V3(-4, 1, -9.25), 0.5, madera),
+        Cube(V3(1, 1, -9.25), 0.5, cuarzo),
+        Cube(V3(0.5, 1, -9.25), 0.5, cuarzo),  
+        Cube(V3(0, 1, -9.25), 0.5, cuarzo),  
+        Cube(V3(-0.5, 1, -9.25), 0.5, cuarzo),
+        Cube(V3(-1, 1, -9.25), 0.5, cuarzo),
+        Cube(V3(-1.5, 1, -9.25), 0.5, cuarzo),
+        Cube(V3(-2, 1, -9.25), 0.5, cuarzo),
+        Cube(V3(-2.5, 1, -9.25), 0.5, cuarzo),
+        Cube(V3(-3, 1, -9.25), 0.5, cuarzo),
+        Cube(V3(-3.5, 1, -9.25), 0.5, cuarzo),
+        Cube(V3(-4, 1, -9.25), 0.5, cuarzo),
 
 
-        #Techa en Desnivel  
-        #Cube(V3(1, 1.5, -9.25), 0.5, snow),
-        #Cube(V3(1.5, 1.5, -9.25), 0.5, snow),
-        #Cube(V3(1.5, 2, -9.25), 0.5, snow),
-        #Cube(V3(2, 2, -9.25), 0.5, snow),
-        #Cube(V3(2, 2.5, -9.25), 0.5, snow),
-        #Cube(V3(2.5, 2.5, -9.25), 0.5, snow),
-        #Cube(V3(2.5, 3, -9.25), 0.5, snow),
-        #Cube(V3(3, 3, -9.25), 0.5, snow),
-        #Cube(V3(3.5, 3, -9.25), 0.5, snow),
-        #Cube(V3(4, 3, -9.25), 0.5, snow),
-        #Cube(V3(4, 2.5, -9.25), 0.5, snow),
-        #Cube(V3(4.5, 2.5, -9.25), 0.5, snow),
-        #Cube(V3(4.5, 2, -9.25), 0.5, snow),
-        #Cube(V3(5, 2, -9.25), 0.5, snow),
-        #Cube(V3(5, 1.5, -9.25), 0.5, snow),
-        #Cube(V3(5.5, 1.5, -9.25), 0.5, snow),
+        # # Techa en Desnivel  
+        Cube(V3(1, 1, -9.25), 0.5, cuarzo),
+        Cube(V3(1.5, 1, -9.25), 0.5, cuarzo),
+        Cube(V3(1.5, 1.5, -9.25), 0.5, cuarzo),
+        Cube(V3(2, 1.5, -9.25), 0.5, cuarzo),
+        Cube(V3(2, 2, -9.25), 0.5, cuarzo),
+        Cube(V3(2.5, 2, -9.25), 0.5, cuarzo),
+        Cube(V3(2.5, 2.5, -9.25), 0.5, cuarzo),
+        Cube(V3(3, 2.5, -9.25), 0.5, cuarzo),
+        Cube(V3(3.5, 2.5, -9.25), 0.5, cuarzo),
+        Cube(V3(4, 2.5, -9.25), 0.5, cuarzo),
+        Cube(V3(4, 2, -9.25), 0.5, cuarzo),
+        Cube(V3(4.5, 2, -9.25), 0.5, cuarzo),
+        Cube(V3(4.5, 1.5, -9.25), 0.5, cuarzo),
+        Cube(V3(5, 1.5, -9.25), 0.5, cuarzo),
+        Cube(V3(5, 1, -9.25), 0.5, cuarzo),
+        Cube(V3(5.5, 1, -9.25), 0.5, cuarzo),
 
-        #Columnas de madera izquierda 
-        #Cube(V3(1.25, 1.25, -9.25), 0.25, coffee),
-        #Cube(V3(1.25, 1, -9.25), 0.25, coffee),
-        #Cube(V3(1.25, 0.75, -9.25), 0.25, coffee),
-        #Cube(V3(1.25, 0.50, -9.25), 0.25, coffee),
-        #Cube(V3(1.25, 0.25, -9.25), 0.25, coffee),
-        #Cube(V3(1.25, 0, -9.25), 0.25, coffee),
-        #Cube(V3(1.25, -0.25, -9.25), 0.25, coffee),
-        #Cube(V3(1.25, -0.50, -9.25), 0.25, coffee),
-        #Cube(V3(1.25, -0.75, -9.25), 0.25, coffee),
-        #Cube(V3(1.25, -1, -9.25), 0.25, coffee),
-        #Cube(V3(1.25, 1.25, -9.25), 0.25, coffee),
-        #Cube(V3(1.25, 1.50, -9.25), 0.25, coffee),
+        # #Columnas de madera izquierda 
+        Cube(V3(1.25, 1.25, -9.25), 0.25, madera),
+        Cube(V3(1.25, 1, -9.25), 0.25, madera),
+        Cube(V3(1.25, 0.75, -9.25), 0.25, madera),
+        Cube(V3(1.25, 0.50, -9.25), 0.25, madera),
+        Cube(V3(1.25, 0.25, -9.25), 0.25, madera),
+        Cube(V3(1.25, 0, -9.25), 0.25, madera),
+        Cube(V3(1.25, -0.25, -9.25), 0.25, madera),
+        Cube(V3(1.25, -0.50, -9.25), 0.25, madera),
+        Cube(V3(1.25, -0.75, -9.25), 0.25, madera),
+        Cube(V3(1.25, -1, -9.25), 0.25, madera),
 
-        #columnas de coffee derecha
-        #Cube(V3(5.25, 1.25, -9.25), 0.25, coffee),
-        #Cube(V3(5.25, 1, -9.25), 0.25, coffee),
-        #Cube(V3(5.25, 0.75, -9.25), 0.25, coffee),
-        #Cube(V3(5.25, 0.50, -9.25), 0.25, coffee),
-        #Cube(V3(5.25, 0.25, -9.25), 0.25, coffee),
-        #Cube(V3(5.25, 0, -9.25), 0.25, coffee),
-        #Cube(V3(5.25, -0.25, -9.25), 0.25, coffee),
-        #Cube(V3(5.25, -0.50, -9.25), 0.25, coffee),
-        #Cube(V3(5.25, -0.75, -9.25), 0.25, coffee),
-        #Cube(V3(5.25, -1, -9.25), 0.25, coffee),
-        #Cube(V3(5.25, 1.25, -9.25), 0.25, coffee),
-        #Cube(V3(5.25, 1.50, -9.25), 0.25, coffee),
+        # #columnas de madera derecha
+        Cube(V3(5.25, 1.25, -9.25), 0.25, madera),
+        Cube(V3(5.25, 1, -9.25), 0.25, madera),
+        Cube(V3(5.25, 0.75, -9.25), 0.25, madera),
+        Cube(V3(5.25, 0.50, -9.25), 0.25, madera),
+        Cube(V3(5.25, 0.25, -9.25), 0.25, madera),
+        Cube(V3(5.25, 0, -9.25), 0.25, madera),
+        Cube(V3(5.25, -0.25, -9.25), 0.25, madera),
+        Cube(V3(5.25, -0.50, -9.25), 0.25, madera),
+        Cube(V3(5.25, -0.75, -9.25), 0.25, madera),
+        Cube(V3(5.25, -1, -9.25), 0.25, madera),
+
+
+        #Columna de madera medio
+        Cube(V3(-1.5, 0.75, -9.25), 0.25, madera),
+        Cube(V3(-1.5, 0.5, -9.25), 0.25, madera),
+        Cube(V3(-1.5, 0.25, -9.25), 0.25, madera),
+        Cube(V3(-1.5, 0, -9.25), 0.25, madera),
+        Cube(V3(-1.5, -0.25, -9.25), 0.25, madera),
+        Cube(V3(-1.5, -0.5, -9.25), 0.25, madera),
+        Cube(V3(-1.5, -0.75, -9.25), 0.25, madera),
+        Cube(V3(-1.5, -1, -9.25), 0.25, madera),
+
+       
+        
+
+        #Columna de madera izquierda
+        Cube(V3(-4, 0.75, -9.25), 0.25, madera),
+        Cube(V3(-4, 0.5, -9.25), 0.25, madera),
+        Cube(V3(-4, 0.25, -9.25), 0.25, madera),
+        Cube(V3(-4, 0, -9.25), 0.25, madera),
+        Cube(V3(-4, -0.25, -9.25), 0.25, madera),
+        Cube(V3(-4, -0.5, -9.25), 0.25, madera),
+        Cube(V3(-4, -0.75, -9.25), 0.25, madera),
+        Cube(V3(-4, -1, -9.25), 0.25, madera),
+   
+        
+
+
+        #Fachada de la casa
+
 
         #Porton de casa
 

@@ -17,7 +17,7 @@ class Plane(object):
             if t > 0:
                 hit = suma(origin, V3(direction.x * t, direction.y * t, direction.z * t))
 
-                return Intersect(distance=t, point=hit, normal=self.normal)
+                return Intersect(distance=t, point=hit, normal=self.normal, text_coords=None)
 
         return None
 
