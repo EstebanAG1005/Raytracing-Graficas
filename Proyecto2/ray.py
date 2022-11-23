@@ -200,7 +200,7 @@ r.scene = [
     Cube(V3(-3, 1, -9.25), 0.5, cuarzo),
     Cube(V3(-3.5, 1, -9.25), 0.5, cuarzo),
     Cube(V3(-4, 1, -9.25), 0.5, cuarzo),
-    # # # Techa en Desnivel
+    # Techo en Desnivel
     Cube(V3(1, 1, -9.25), 0.5, cuarzo),
     Cube(V3(1.5, 1, -9.25), 0.5, cuarzo),
     Cube(V3(1.5, 1.5, -9.25), 0.5, cuarzo),
@@ -218,7 +218,6 @@ r.scene = [
     Cube(V3(5, 1, -9.25), 0.5, cuarzo),
     Cube(V3(5.5, 1, -9.25), 0.5, cuarzo),
     # #Columnas de madera izquierda
-    Cube(V3(1.25, 1.25, -9.25), 0.25, madera),
     Cube(V3(1.25, 1, -9.25), 0.25, madera),
     Cube(V3(1.25, 0.75, -9.25), 0.25, madera),
     Cube(V3(1.25, 0.50, -9.25), 0.25, madera),
@@ -239,6 +238,8 @@ r.scene = [
     Cube(V3(5.25, -0.50, -9.25), 0.25, madera),
     Cube(V3(5.25, -0.75, -9.25), 0.25, madera),
     Cube(V3(5.25, -1, -9.25), 0.25, madera),
+    Cube(V3(5.25, -1.25, -9.25), 0.25, madera),
+    Cube(V3(5.25, -1.5, -9.25), 0.25, madera),
     # Columna de madera medio
     Cube(V3(-1.5, 0.75, -9.25), 0.25, madera),
     Cube(V3(-1.5, 0.5, -9.25), 0.25, madera),
@@ -280,7 +281,7 @@ r.scene = [
     Cube(V3(1.35, 0.5, -10), 0.5, grey),
     # Parte de abajo columnas cobble
     Cube(V3(1.25, -1.25, -9.25), 0.5, cobblestone),
-    Cube(V3(5.25, -1, -9.25), 0.5, cobblestone),
+    Cube(V3(5.25, -1.25, -9.25), 0.5, cobblestone),
     # Porton de casa
     Cube(V3(1.75, -1.40, -10), 0.5, cuarzo),
     Cube(V3(2, -1.40, -10), 0.5, cuarzo),
@@ -290,7 +291,6 @@ r.scene = [
     Cube(V3(4, -1.40, -10), 0.5, cuarzo),
     Cube(V3(4.5, -1.40, -10), 0.5, cuarzo),
     Cube(V3(5, -1.40, -10), 0.5, cuarzo),
-    Cube(V3(5.5, -1.40, -10), 0.5, cuarzo),
     # Uno arriba porton
     Cube(V3(1.8, -0.90, -10), 0.5, cuarzo),
     Cube(V3(2, -0.90, -10), 0.5, cuarzo),
@@ -299,8 +299,16 @@ r.scene = [
     Cube(V3(3.5, -0.90, -10), 0.5, cuarzo),
     Cube(V3(4, -0.90, -10), 0.5, cuarzo),
     Cube(V3(4.5, -0.90, -10), 0.5, cuarzo),
-    Cube(V3(5, -0.90, -10), 0.5, cuarzo),
-    Cube(V3(5.5, -0.90, -10), 0.5, cuarzo),
+    Cube(V3(4.9, -0.90, -10), 0.5, cuarzo),
+    # INTER arriba porton
+    Cube(V3(1.75, -0.45, -10), 0.5, cuarzo),
+    Cube(V3(2, -0.45, -10), 0.5, cuarzo),
+    Cube(V3(2.5, -0.45, -10), 0.5, cuarzo),
+    Cube(V3(3, -0.45, -10), 0.5, cuarzo),
+    Cube(V3(3.5, -0.45, -10), 0.5, cuarzo),
+    Cube(V3(4, -0.45, -10), 0.5, cuarzo),
+    Cube(V3(4.5, -0.45, -10), 0.5, cuarzo),
+    Cube(V3(4.9, -0.45, -10), 0.5, cuarzo),
     # dos arriba porton
     Cube(V3(1.75, -0.35, -10), 0.5, cuarzo),
     Cube(V3(2, -0.35, -10), 0.5, cuarzo),
@@ -309,8 +317,7 @@ r.scene = [
     Cube(V3(3.5, -0.35, -10), 0.5, cuarzo),
     Cube(V3(4, -0.35, -10), 0.5, cuarzo),
     Cube(V3(4.5, -0.35, -10), 0.5, cuarzo),
-    Cube(V3(5, -0.35, -10), 0.5, cuarzo),
-    Cube(V3(5.5, -0.35, -10), 0.5, cuarzo),
+    Cube(V3(4.9, -0.35, -10), 0.5, cuarzo),
     # tres arriba porton
     Cube(V3(1.75, 0.15, -10), 0.5, grey),
     Cube(V3(2, 0.15, -10), 0.5, grey),
@@ -321,6 +328,7 @@ r.scene = [
     Cube(V3(4.5, 0.15, -10), 0.5, grey),
     Cube(V3(5, 0.15, -10), 0.5, grey),
     Cube(V3(5.5, 0.15, -10), 0.5, grey),
+    Cube(V3(6, 0.15, -10), 0.5, grey),
     # cuatro arriba porton
     Cube(V3(1.75, 0.65, -10), 0.5, grey),
     Cube(V3(2, 0.65, -10), 0.5, grey),
@@ -331,6 +339,14 @@ r.scene = [
     Cube(V3(4.5, 0.65, -10), 0.5, grey),
     Cube(V3(5, 0.65, -10), 0.5, grey),
     Cube(V3(5.5, 0.65, -10), 0.5, grey),
+    Cube(V3(6, 0.65, -10), 0.5, grey),
+    # Arreglo derecha
+    Cube(V3(5.5, 0.65, -10), 0.5, grey),
+    Cube(V3(5.5, 0.15, -10), 0.5, grey),
+    Cube(V3(5.5, -0.35, -10), 0.5, grey),
+    Cube(V3(5.5, -0.45, -10), 0.5, grey),
+    Cube(V3(5.5, -0.90, -10), 0.5, grey),
+    Cube(V3(5.5, -1.40, -10), 0.5, grey),
     # cinco arriba porton
     Cube(V3(1.75, 1.15, -10), 0.5, grey),
     Cube(V3(2, 1.15, -10), 0.5, grey),
@@ -354,16 +370,17 @@ r.scene = [
     Cube(V3(3.5, 2.15, -10), 0.5, grey),
     Cube(V3(4, 2.15, -10), 0.5, grey),
     # botones
-    Cube(V3(1.8, -0.90, -9.25), 0.25, iron),
-    Cube(V3(2.8, -0.90, -9.25), 0.25, iron),
-    Cube(V3(3.8, -0.90, -9.25), 0.25, iron),
-    Cube(V3(4.8, -0.90, -9.25), 0.25, iron),
+    Cube(V3(1.7, -0.90, -9.25), 0.25, iron),
+    Cube(V3(2.7, -0.90, -9.25), 0.25, iron),
+    Cube(V3(3.7, -0.90, -9.25), 0.25, iron),
+    Cube(V3(4.7, -0.90, -9.25), 0.25, iron),
     # Segunda pared negra
     Cube(V3(0.85, -1.40, -10), 0.5, grey),
     Cube(V3(0.85, -0.85, -10), 0.5, grey),
     Cube(V3(0.85, -0.35, -10), 0.5, grey),
     Cube(V3(0.85, 0.15, -10), 0.5, grey),
     Cube(V3(0.85, 0.5, -10), 0.5, grey),
+    Cube(V3(0.85, 0.75, -10), 0.5, grey),
     # Tecerda Pared
     Cube(V3(-1.5, -0.80, -9.5), 0.5, grey),
     Cube(V3(-1.5, -0.55, -9.5), 0.5, grey),
@@ -376,7 +393,7 @@ r.scene = [
     Cube(V3(-1.25, 0.15, -9.5), 0.5, grey),
     Cube(V3(-1.25, 0.5, -9.5), 0.5, grey),
     # Puerta
-    Cube(V3(-0.25, 0, -11), 2, door),
+    Cube(V3(-0.25, 0, -11), 2.5, door),
     # Vidrio
     Cube(V3(-2.75, 0, -10), 0.5, glass_mine),
     Cube(V3(-2.75, -0.25, -10), 0.5, glass_mine),
@@ -389,6 +406,108 @@ r.scene = [
     Cube(V3(-3, -0.80, -10), 0.5, cuarzo),
     Cube(V3(-3.5, -0.80, -10), 0.5, cuarzo),
     Cube(V3(-4, -0.80, -10), 0.5, cuarzo),
+    # Pared Ariba
+    Cube(V3(0.85, 1, -10), 0.5, grey),
+    Cube(V3(0.85, 1.5, -10), 0.5, grey),
+    Cube(V3(0.85, 2, -10), 0.5, grey),
+    Cube(V3(0.85, 2.5, -10), 0.5, grey),
+    Cube(V3(0.85, 3, -10), 0.5, grey),
+    # Pared Ariba 2
+    Cube(V3(1.35, 1, -10), 0.5, grey),
+    Cube(V3(1.35, 1.5, -10), 0.5, grey),
+    Cube(V3(1.35, 2, -10), 0.5, grey),
+    Cube(V3(1.35, 2.5, -10), 0.5, grey),
+    Cube(V3(1.35, 3, -10), 0.5, grey),
+    Cube(V3(1.35, 3.5, -10), 0.5, grey),
+    # Pared Ariba 3
+    Cube(V3(1.85, 1, -10), 0.5, grey),
+    Cube(V3(1.85, 1.5, -10), 0.5, grey),
+    Cube(V3(1.85, 2, -10), 0.5, grey),
+    Cube(V3(1.85, 2.5, -10), 0.5, grey),
+    Cube(V3(1.85, 3, -10), 0.5, grey),
+    Cube(V3(1.85, 3.5, -10), 0.5, grey),
+    Cube(V3(1.85, 4, -10), 0.5, grey),
+    # Pared Ariba 4
+    Cube(V3(2.35, 1, -10), 0.5, grey),
+    Cube(V3(2.35, 1.5, -10), 0.5, grey),
+    Cube(V3(2.35, 2, -10), 0.5, grey),
+    Cube(V3(2.35, 2.5, -10), 0.5, grey),
+    Cube(V3(2.35, 3, -10), 0.5, grey),
+    Cube(V3(2.35, 3.5, -10), 0.5, grey),
+    Cube(V3(2.35, 4, -10), 0.5, grey),
+    Cube(V3(2.35, 4.5, -10), 0.5, grey),
+    # Pared Ariba 5
+    Cube(V3(2.85, 1, -10), 0.5, grey),
+    Cube(V3(2.85, 1.5, -10), 0.5, grey),
+    Cube(V3(2.85, 2, -10), 0.5, grey),
+    Cube(V3(2.85, 2.5, -10), 0.5, grey),
+    Cube(V3(2.85, 3, -10), 0.5, grey),
+    Cube(V3(2.85, 3.5, -10), 0.5, grey),
+    Cube(V3(2.85, 4, -10), 0.5, grey),
+    Cube(V3(2.85, 4.5, -10), 0.5, grey),
+    Cube(V3(2.85, 5, -10), 0.5, grey),
+    # Pared Ariba 6
+    Cube(V3(3.35, 1, -10), 0.5, grey),
+    Cube(V3(3.35, 1.5, -10), 0.5, grey),
+    Cube(V3(3.35, 2, -10), 0.5, grey),
+    Cube(V3(3.35, 2.5, -10), 0.5, grey),
+    Cube(V3(3.35, 3, -10), 0.5, grey),
+    Cube(V3(3.35, 3.5, -10), 0.5, grey),
+    Cube(V3(3.35, 4, -10), 0.5, grey),
+    Cube(V3(3.35, 4.5, -10), 0.5, grey),
+    Cube(V3(3.35, 5, -10), 0.5, grey),
+    Cube(V3(3.35, 5.5, -10), 0.5, grey),
+    # Pared Ariba 7
+    Cube(V3(3.85, 1, -10), 0.5, grey),
+    Cube(V3(3.85, 1.5, -10), 0.5, grey),
+    Cube(V3(3.85, 2, -10), 0.5, grey),
+    Cube(V3(3.85, 2.5, -10), 0.5, grey),
+    Cube(V3(3.85, 3, -10), 0.5, grey),
+    Cube(V3(3.85, 3.5, -10), 0.5, grey),
+    Cube(V3(3.85, 4, -10), 0.5, grey),
+    Cube(V3(3.85, 4.5, -10), 0.5, grey),
+    Cube(V3(3.85, 5, -10), 0.5, grey),
+    Cube(V3(3.85, 5.5, -10), 0.5, grey),
+    # Pared Ariba 8
+    Cube(V3(4.35, 1, -10), 0.5, grey),
+    Cube(V3(4.35, 1.5, -10), 0.5, grey),
+    Cube(V3(4.35, 2, -10), 0.5, grey),
+    Cube(V3(4.35, 2.5, -10), 0.5, grey),
+    Cube(V3(4.35, 3, -10), 0.5, grey),
+    Cube(V3(4.35, 3.5, -10), 0.5, grey),
+    Cube(V3(4.35, 4, -10), 0.5, grey),
+    Cube(V3(4.35, 4.5, -10), 0.5, grey),
+    Cube(V3(4.35, 5, -10), 0.5, grey),
+    # Pared Ariba 9
+    Cube(V3(4.85, 1, -10), 0.5, grey),
+    Cube(V3(4.85, 1.5, -10), 0.5, grey),
+    Cube(V3(4.85, 2, -10), 0.5, grey),
+    Cube(V3(4.85, 2.5, -10), 0.5, grey),
+    Cube(V3(4.85, 3, -10), 0.5, grey),
+    Cube(V3(4.85, 3.5, -10), 0.5, grey),
+    Cube(V3(4.85, 4, -10), 0.5, grey),
+    Cube(V3(4.85, 4.5, -10), 0.5, grey),
+    # Pared Ariba 10
+    Cube(V3(5.35, 1, -10), 0.5, grey),
+    Cube(V3(5.35, 1.5, -10), 0.5, grey),
+    Cube(V3(5.35, 2, -10), 0.5, grey),
+    Cube(V3(5.35, 2.5, -10), 0.5, grey),
+    Cube(V3(5.35, 3, -10), 0.5, grey),
+    Cube(V3(5.35, 3.5, -10), 0.5, grey),
+    Cube(V3(5.35, 4, -10), 0.5, grey),
+    # Pared Ariba 11
+    Cube(V3(5.85, 1, -10), 0.5, grey),
+    Cube(V3(5.85, 1.5, -10), 0.5, grey),
+    Cube(V3(5.85, 2, -10), 0.5, grey),
+    Cube(V3(5.85, 2.5, -10), 0.5, grey),
+    Cube(V3(5.85, 3, -10), 0.5, grey),
+    Cube(V3(5.85, 3.5, -10), 0.5, grey),
+    # Pared Ariba 12
+    Cube(V3(6.35, 1, -10), 0.5, grey),
+    Cube(V3(6.35, 1.5, -10), 0.5, grey),
+    Cube(V3(6.35, 2, -10), 0.5, grey),
+    Cube(V3(6.35, 2.5, -10), 0.5, grey),
+    Cube(V3(6.35, 3, -10), 0.5, grey),
     # awita
     # Cube(V3(0, -7, -9.25), 10, awita),
 ]
@@ -396,3 +515,4 @@ r.scene = [
 r.render()
 
 r.write("Final.bmp")
+# r.write("TEST.bmp")
