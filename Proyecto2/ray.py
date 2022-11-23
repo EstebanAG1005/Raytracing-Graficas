@@ -161,7 +161,7 @@ coffee = Material(diffuse=color(71, 51, 10), albedo=(0.6, 0.3, 0, 0, 0), spec=10
 softcoffee = Material(diffuse=color(230, 170, 135), albedo=(0.9, 0.9), spec=35)
 dark = Material(diffuse=color(0, 0, 0), albedo=(0.3, 0.3), spec=3)
 lightGreen = Material(diffuse=color(130, 223, 36), albedo=(0.9, 0.9), spec=10)
-iron = Material(diffuse=color(200, 200, 200), albedo=(1, 1), spec=20)
+iron = Material(diffuse=color(200, 200, 200), albedo=(1, 1, 0, 0), spec=20)
 cuarzo = Material(diffuse=color(250, 250, 250), albedo=(0.9, 0.9, 0, 0), spec=35)
 
 ivory = Material(diffuse=color(100, 100, 80), albedo=(0.6, 0.3, 0.1, 0), spec=50)
@@ -173,17 +173,16 @@ awita = Material(
     spec=1425,
     refractive_index=1.5,
 )
-
+grey = Material(diffuse=color(128, 128, 128), albedo=(0.3, 0.3, 0, 0), spec=3)
 # cuarzo = Material(texture=('./mine_madera.bmp'))
 
 madera = Material(texture=Texture("./maderamine.bmp"))
 hojas = Material(texture=Texture("./hojas.bmp"))
 glass_mine = Material(texture=Texture("./glass.bmp"))
-black_concrete = Material(texture=Texture("./black_concrete.bmp"))
-cobblestone = Material(texture=Texture("./cobble.bmp"))
+cobblestone = Material(texture=Texture("./piedra2.bmp"))
+door = Material(texture=Texture("./doormi.bmp"))
 
-
-r = Raytracer(100, 100)
+r = Raytracer(800, 600)
 r.light = Light(V3(-20, 20, 20), 1)
 
 r.envmap = Envmap("./minecraft.bmp")
@@ -266,37 +265,132 @@ r.scene = [
     Cube(V3(-3.5, -1.25, -9.25), 0.5, hojas),
     Cube(V3(-4, -1.25, -9.25), 0.5, hojas),
     # Gradas de madera
-    Cube(V3(0, -1.25, -9.25), 0.5, madera),
-    Cube(V3(-1, -1.25, -9.25), 0.5, madera),
-    Cube(V3(-0.5, -1.25, -9.25), 0.5, madera),
-    Cube(V3(-1.5, -1.25, -9.25), 0.5, madera),
-    Cube(V3(0.5, -1.25, -9.25), 0.5, madera),
-    Cube(V3(0.75, -1.25, -9.25), 0.5, madera),
+    Cube(V3(0, -1.40, -10), 0.5, madera),
+    Cube(V3(-1, -1.40, -10), 0.5, madera),
+    Cube(V3(-0.5, -1.40, -10), 0.5, madera),
+    Cube(V3(-1.5, -1.40, -10), 0.5, madera),
+    Cube(V3(0.5, -1.40, -10), 0.5, madera),
+    Cube(V3(0.75, -1.40, -10), 0.5, madera),
+    Cube(V3(0.85, -1.40, -10), 0.5, madera),
     # Parde abajo de columnas
-    Cube(V3(1.25, -1.25, -9.25), 0.5, black_concrete),
+    Cube(V3(1.35, -1.40, -10), 0.5, grey),
+    Cube(V3(1.35, -0.85, -10), 0.5, grey),
+    Cube(V3(1.35, -0.35, -10), 0.5, grey),
+    Cube(V3(1.35, 0.15, -10), 0.5, grey),
+    Cube(V3(1.35, 0.5, -10), 0.5, grey),
+    # Parte de abajo columnas cobble
+    Cube(V3(1.25, -1.25, -9.25), 0.5, cobblestone),
+    Cube(V3(5.25, -1, -9.25), 0.5, cobblestone),
     # Porton de casa
-    Cube(V3(1.5, -1.25, -9.25), 0.5, cuarzo),
-    Cube(V3(2, -1.25, -9.25), 0.5, cuarzo),
-    Cube(V3(2.5, -1.25, -9.25), 0.5, cuarzo),
-    Cube(V3(3, -1.25, -9.25), 0.5, cuarzo),
-    Cube(V3(3.5, -1.25, -9.25), 0.5, cuarzo),
-    Cube(V3(4, -1.25, -9.25), 0.5, cuarzo),
+    Cube(V3(1.75, -1.40, -10), 0.5, cuarzo),
+    Cube(V3(2, -1.40, -10), 0.5, cuarzo),
+    Cube(V3(2.5, -1.40, -10), 0.5, cuarzo),
+    Cube(V3(3, -1.40, -10), 0.5, cuarzo),
+    Cube(V3(3.5, -1.40, -10), 0.5, cuarzo),
+    Cube(V3(4, -1.40, -10), 0.5, cuarzo),
+    Cube(V3(4.5, -1.40, -10), 0.5, cuarzo),
+    Cube(V3(5, -1.40, -10), 0.5, cuarzo),
+    Cube(V3(5.5, -1.40, -10), 0.5, cuarzo),
     # Uno arriba porton
-    Cube(V3(1.5, -0.75, -9.25), 0.5, cuarzo),
-    Cube(V3(2, -0.75, -9.25), 0.5, cuarzo),
-    Cube(V3(2.5, -0.75, -9.25), 0.5, cuarzo),
-    Cube(V3(3, -0.75, -9.25), 0.5, cuarzo),
-    Cube(V3(3.5, -0.75, -9.25), 0.5, cuarzo),
-    Cube(V3(4, -0.75, -9.25), 0.5, cuarzo),
+    Cube(V3(1.8, -0.90, -10), 0.5, cuarzo),
+    Cube(V3(2, -0.90, -10), 0.5, cuarzo),
+    Cube(V3(2.5, -0.90, -10), 0.5, cuarzo),
+    Cube(V3(3, -0.90, -10), 0.5, cuarzo),
+    Cube(V3(3.5, -0.90, -10), 0.5, cuarzo),
+    Cube(V3(4, -0.90, -10), 0.5, cuarzo),
+    Cube(V3(4.5, -0.90, -10), 0.5, cuarzo),
+    Cube(V3(5, -0.90, -10), 0.5, cuarzo),
+    Cube(V3(5.5, -0.90, -10), 0.5, cuarzo),
     # dos arriba porton
-    Cube(V3(1.5, -0.25, -9.25), 0.5, cuarzo),
-    Cube(V3(2, -0.25, -9.25), 0.5, cuarzo),
-    Cube(V3(2.5, -0.25, -9.25), 0.5, cuarzo),
-    Cube(V3(3, -0.25, -9.25), 0.5, cuarzo),
-    Cube(V3(3.5, -0.25, -9.25), 0.5, cuarzo),
-    Cube(V3(4, -0.25, -9.25), 0.5, cuarzo),
+    Cube(V3(1.75, -0.35, -10), 0.5, cuarzo),
+    Cube(V3(2, -0.35, -10), 0.5, cuarzo),
+    Cube(V3(2.5, -0.35, -10), 0.5, cuarzo),
+    Cube(V3(3, -0.35, -10), 0.5, cuarzo),
+    Cube(V3(3.5, -0.35, -10), 0.5, cuarzo),
+    Cube(V3(4, -0.35, -10), 0.5, cuarzo),
+    Cube(V3(4.5, -0.35, -10), 0.5, cuarzo),
+    Cube(V3(5, -0.35, -10), 0.5, cuarzo),
+    Cube(V3(5.5, -0.35, -10), 0.5, cuarzo),
+    # tres arriba porton
+    Cube(V3(1.75, 0.15, -10), 0.5, grey),
+    Cube(V3(2, 0.15, -10), 0.5, grey),
+    Cube(V3(2.5, 0.15, -10), 0.5, grey),
+    Cube(V3(3, 0.15, -10), 0.5, grey),
+    Cube(V3(3.5, 0.15, -10), 0.5, grey),
+    Cube(V3(4, 0.15, -10), 0.5, grey),
+    Cube(V3(4.5, 0.15, -10), 0.5, grey),
+    Cube(V3(5, 0.15, -10), 0.5, grey),
+    Cube(V3(5.5, 0.15, -10), 0.5, grey),
+    # cuatro arriba porton
+    Cube(V3(1.75, 0.65, -10), 0.5, grey),
+    Cube(V3(2, 0.65, -10), 0.5, grey),
+    Cube(V3(2.5, 0.65, -10), 0.5, grey),
+    Cube(V3(3, 0.65, -10), 0.5, grey),
+    Cube(V3(3.5, 0.65, -10), 0.5, grey),
+    Cube(V3(4, 0.65, -10), 0.5, grey),
+    Cube(V3(4.5, 0.65, -10), 0.5, grey),
+    Cube(V3(5, 0.65, -10), 0.5, grey),
+    Cube(V3(5.5, 0.65, -10), 0.5, grey),
+    # cinco arriba porton
+    Cube(V3(1.75, 1.15, -10), 0.5, grey),
+    Cube(V3(2, 1.15, -10), 0.5, grey),
+    Cube(V3(2.5, 1.15, -10), 0.5, grey),
+    Cube(V3(3, 1.15, -10), 0.5, grey),
+    Cube(V3(3.5, 1.15, -10), 0.5, grey),
+    Cube(V3(4, 1.15, -10), 0.5, grey),
+    Cube(V3(4.5, 1.15, -10), 0.5, grey),
+    Cube(V3(5, 1.15, -10), 0.5, grey),
+    Cube(V3(5.5, 1.15, -10), 0.5, grey),
+    # seis arriba porton
+    Cube(V3(2, 1.65, -10), 0.5, grey),
+    Cube(V3(2.5, 1.65, -10), 0.5, grey),
+    Cube(V3(3, 1.65, -10), 0.5, grey),
+    Cube(V3(3.5, 1.65, -10), 0.5, grey),
+    Cube(V3(4, 1.65, -10), 0.5, grey),
+    Cube(V3(4.5, 1.65, -10), 0.5, grey),
+    # siete arriba porton
+    Cube(V3(2.5, 2.15, -10), 0.5, grey),
+    Cube(V3(3, 2.15, -10), 0.5, grey),
+    Cube(V3(3.5, 2.15, -10), 0.5, grey),
+    Cube(V3(4, 2.15, -10), 0.5, grey),
+    # botones
+    Cube(V3(1.8, -0.90, -9.25), 0.25, iron),
+    Cube(V3(2.8, -0.90, -9.25), 0.25, iron),
+    Cube(V3(3.8, -0.90, -9.25), 0.25, iron),
+    Cube(V3(4.8, -0.90, -9.25), 0.25, iron),
+    # Segunda pared negra
+    Cube(V3(0.85, -1.40, -10), 0.5, grey),
+    Cube(V3(0.85, -0.85, -10), 0.5, grey),
+    Cube(V3(0.85, -0.35, -10), 0.5, grey),
+    Cube(V3(0.85, 0.15, -10), 0.5, grey),
+    Cube(V3(0.85, 0.5, -10), 0.5, grey),
+    # Tecerda Pared
+    Cube(V3(-1.5, -0.80, -9.5), 0.5, grey),
+    Cube(V3(-1.5, -0.55, -9.5), 0.5, grey),
+    Cube(V3(-1.5, -0.35, -9.5), 0.5, grey),
+    Cube(V3(-1.5, 0.15, -9.5), 0.5, grey),
+    Cube(V3(-1.5, 0.5, -9.5), 0.5, grey),
+    Cube(V3(-1.25, -0.80, -9.5), 0.5, grey),
+    Cube(V3(-1.25, -0.55, -9.5), 0.5, grey),
+    Cube(V3(-1.25, -0.35, -9.5), 0.5, grey),
+    Cube(V3(-1.25, 0.15, -9.5), 0.5, grey),
+    Cube(V3(-1.25, 0.5, -9.5), 0.5, grey),
+    # Puerta
+    Cube(V3(-0.25, 0, -11), 2, door),
     # Vidrio
-    Plane(V3(-2.5, -3, -11), 4, awita),
+    Cube(V3(-2.75, 0, -10), 0.5, glass_mine),
+    Cube(V3(-2.75, -0.25, -10), 0.5, glass_mine),
+    Cube(V3(-3.25, 0, -10), 0.5, glass_mine),
+    Cube(V3(-3.25, -0.25, -10), 0.5, glass_mine),
+    # Cuarzo abajo
+    Cube(V3(-1.5, -0.80, -10), 0.5, cuarzo),
+    Cube(V3(-2, -0.80, -10), 0.5, cuarzo),
+    Cube(V3(-2.5, -0.80, -10), 0.5, cuarzo),
+    Cube(V3(-3, -0.80, -10), 0.5, cuarzo),
+    Cube(V3(-3.5, -0.80, -10), 0.5, cuarzo),
+    Cube(V3(-4, -0.80, -10), 0.5, cuarzo),
+    # awita
+    # Cube(V3(0, -7, -9.25), 10, awita),
 ]
 
 r.render()
